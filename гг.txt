@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aldiargram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+        } 
+        nav { 
+            height: 60px; 
+            display: flex; 
+            align-items: center; 
+            border-bottom: 1px solid rgb(198, 198, 198); 
+            padding: 0 20%; 
+        } 
+        a { 
+            display: flex; 
+            align-self: center; 
+            width: auto; 
+            font-size: 30px; 
+        } 
+        #posts { 
+            display: flex; 
+            justify-content: center; 
+        } 
+        #postsBox { 
+            width: 40%; 
+        } 
+        .img { 
+            width: 100%; 
+        } 
+        .post { 
+            font-size: 30px; 
+            border: 1px solid goldenrod; 
+            padding: 50px; 
+            margin: 30px 0; 
+        } 
+        .ava { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 100%; 
+            margin-right: 20px; 
+        } 
+        .avaBox { 
+            display: flex; 
+            align-items: center; 
+        } 
+        .likes { 
+            display: flex; 
+            align-items: center; 
+        } 
+        .like { 
+            margin-right: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <nav> 
+        <a><b>Akbotargram</b></a> 
+    </nav> 
+    <section id="posts"> 
+        <div id="postsBox"> 
+            <div id="firstPost" class="post"> 
+                <div class="avaBox"> 
+                    <img id="imgpost" class="ava" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStF117Li5b-XO-b8YM8KSLFzqsUB9wHD2X6mZRnkiquA&s"> 
+                    <b>Akbota</b> 
+                </div> 
+                <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBsLKMGCIA5YvysV5r9aSDFOHHLK8ml1wfNc2YjwwzxRqa_XlHQnfK0cXBVGz2AeBlA3c&usqp=CAU"> 
+                <div class="likes"> 
+                    <button class="like" onclick="likePost(this)">Like</button>
+                    <p>Likes: <span class="likeCount">0</span></p>
+                </div> 
+                <div> 
+                    Интелектуальная олимпиада "Акбота" 
+                </div> 
+            </div>     
+        </div> 
+    </section> 
+
+    <script>
+
+let post = document.getElementById("firstPost"); 
+let postsBox = document.getElementById("postsBox") 
+let imgurls = [ 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBsLKMGCIA5YvysV5r9aSDFOHHLK8ml1wfNc2YjwwzxRqa_XlHQnfK0cXBVGz2AeBlA3c&usqp=CAU", 
+    "https://goo.edu.kz/media/img/blogs/5090bacb02bd0.jpg" 
+] 
+for(let i = 0; i < 100; i++){ 
+    newpost = post.cloneNode(true); 
+    imgpost = newpost.getElementsByClassName("img")[0] 
+    imgpost.setAttribute("src", imgurls[i%2]) 
+    postsBox.appendChild(newpost); 
+}
+
+
+        function likePost(likeButton) {
+            const likeCountElement = likeButton.parentNode.parentNode.querySelector(".likeCount");
+            let likeCount = parseInt(likeCountElement.innerText);
+            likeCount++;
+            likeCountElement.innerText = likeCount;
+        }
+    </script>
+</body>
+</html>
